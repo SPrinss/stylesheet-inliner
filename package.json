@@ -1,0 +1,27 @@
+{
+  "name": "stylesheet-inliner",
+  "version": "0.0.1",
+  "description": "Returns inlined css String from stylesheet link tag",
+  "main": "src/stylesheet-inliner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPrinss/stylesheet-inliner.git"
+  },
+  "keywords": [
+    "stylesheets",
+    "inline",
+    "modules"
+  ],
+  "author": "Wouter Vroege & Sam Prinssen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SPrinss/stylesheet-inliner/issues"
+  },
+  "homepage": "https://github.com/SPrinss/stylesheet-inliner#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
