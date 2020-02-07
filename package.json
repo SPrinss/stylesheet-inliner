@@ -4,7 +4,7 @@
   "description": "Returns inlined css String from stylesheet link tag",
   "main": "src/stylesheet-inliner.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "demo": "node './demo/index.js' --linkTag='<link rel=\"stylesheet\" href=\"./demo/demo.css\">' --originalFilePath='./'"
   },
   "repository": {
     "type": "git",
