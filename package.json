@@ -1,6 +1,6 @@
 {
   "name": "stylesheet-inliner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Returns inlined css String from stylesheet link tag",
   "main": "src/stylesheet-inliner.js",
   "scripts": {
