@@ -4,6 +4,7 @@ const argv = require('yargs').argv;
 const inlineStyles = require('./stylesheet-inliner');
 const glob = require('glob');
 const fs = require('fs');
+const path = require('path');
 
 const inputPattern = argv.input;
 if(!inputPattern) return;
@@ -14,8 +15,9 @@ glob(inputPattern, {}, (err, files) => {
   
   for(var i in files) {
     const fileURL = files[i];
+    const baseURI = path.dirname(path.resolve(fileURL));
     const fileContents = fs.readFileSync(fileURL).toString();
-    const newContents = inlineStyles(fileContents, fileURL);
+    const newContents = inlineStyles(fileContents, baseURI);
     fs.writeFileSync(fileURL, newContents);
   }
   
