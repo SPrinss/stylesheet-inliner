@@ -1,23 +1,14 @@
 const { readFileSync } = require('fs');
 const path = require('path');
 
-const stylesheetInliner = (linkTag, originalFilePath, indent = '') => {
-  const stylesheetURL = linkTag.match(/href\="(.*?)"/i)[1];
-  if(stylesheetURL.match(/^http/)) return linkTag;
-  const stylesheetFilePath = _parseFilePath(originalFilePath, stylesheetURL);
-  const file = readFileSync(stylesheetFilePath);
-  const fileString = file.toString().replace(/$\n^(| )/gm, `\n${indent}`)
-  return `
-    <style>
-      ${fileString}
-    </style>
-  `;
+function main(code, baseURI) {
+  return code.replace(/<link.*?rel="stylesheet".*?>/gi, (linkTag) => inlineStyles(linkTag, baseURI));
 }
 
-const _parseFilePath = (originalFilePath, cssRelFilePath) => {
-  const folderPath = originalFilePath.substring(0, originalFilePath.lastIndexOf('/'));
-  const cssFilePath = path.join(folderPath, cssRelFilePath);
-  return cssFilePath;
+function inlineStyles(linkTag, baseURI) {
+  const linkURL = linkTag.match(/href\="(.*?)"/i)[1];
+  const cssURL = path.join(path.dirname(baseURI), linkURL);
+  return `<style>${readFileSync(cssURL).toString()}</style>`
 }
 
-module.exports = stylesheetInliner;
+module.exports = main;

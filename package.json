@@ -1,8 +1,11 @@
 {
   "name": "stylesheet-inliner",
-  "version": "0.0.2",
+  "version": "0.4.0",
   "description": "Returns inlined css String from stylesheet link tag",
   "main": "src/stylesheet-inliner.js",
+  "bin": {
+    "stylesheet-inliner": "./src/cli.js"
+  },
   "scripts": {
     "demo": "node './demo/index.js' --linkTag='<link rel=\"stylesheet\" href=\"./demo/demo.css\">' --originalFilePath='./'"
   },
@@ -23,5 +26,9 @@
   "homepage": "https://github.com/SPrinss/stylesheet-inliner#readme",
   "devDependencies": {
     "minimist": "^1.2.0"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "yargs": "^15.1.0"
   }
 }
